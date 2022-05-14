@@ -2,52 +2,53 @@
 #include <assets_icons.h>
 
 // Services
-extern int32_t rpc_srv(void* p);
-extern int32_t bt_srv(void* p);
-extern int32_t cli_srv(void* p);
-extern int32_t dialogs_srv(void* p);
-extern int32_t dolphin_srv(void* p);
-extern int32_t gui_srv(void* p);
-extern int32_t input_srv(void* p);
-extern int32_t loader_srv(void* p);
-extern int32_t notification_srv(void* p);
-extern int32_t power_srv(void* p);
-extern int32_t storage_srv(void* p);
-extern int32_t desktop_srv(void* p);
-extern int32_t updater_srv(void* p);
+extern int32_t rpc_srv(void *p);
+extern int32_t bt_srv(void *p);
+extern int32_t cli_srv(void *p);
+extern int32_t dialogs_srv(void *p);
+extern int32_t dolphin_srv(void *p);
+extern int32_t gui_srv(void *p);
+extern int32_t input_srv(void *p);
+extern int32_t loader_srv(void *p);
+extern int32_t notification_srv(void *p);
+extern int32_t power_srv(void *p);
+extern int32_t storage_srv(void *p);
+extern int32_t desktop_srv(void *p);
+extern int32_t updater_srv(void *p);
 
 // Apps
-extern int32_t accessor_app(void* p);
-extern int32_t archive_app(void* p);
-extern int32_t bad_usb_app(void* p);
-extern int32_t u2f_app(void* p);
-extern int32_t uart_echo_app(void* p);
-extern int32_t blink_test_app(void* p);
-extern int32_t bt_debug_app(void* p);
-extern int32_t delay_test_app(void* p);
-extern int32_t display_test_app(void* p);
-extern int32_t gpio_app(void* p);
-extern int32_t ibutton_app(void* p);
-extern int32_t infrared_app(void* p);
-extern int32_t infrared_monitor_app(void* p);
-extern int32_t keypad_test_app(void* p);
-extern int32_t lfrfid_app(void* p);
-extern int32_t lfrfid_debug_app(void* p);
-extern int32_t nfc_app(void* p);
-extern int32_t passport_app(void* p);
-extern int32_t scened_app(void* p);
-extern int32_t storage_test_app(void* p);
-extern int32_t subghz_app(void* p);
-extern int32_t usb_mouse_app(void* p);
-extern int32_t usb_test_app(void* p);
-extern int32_t vibro_test_app(void* p);
-extern int32_t bt_hid_app(void* p);
-extern int32_t battery_test_app(void* p);
-extern int32_t text_box_test_app(void* p);
+extern int32_t accessor_app(void *p);
+extern int32_t archive_app(void *p);
+extern int32_t bad_usb_app(void *p);
+extern int32_t u2f_app(void *p);
+extern int32_t uart_echo_app(void *p);
+extern int32_t blink_test_app(void *p);
+extern int32_t bt_debug_app(void *p);
+extern int32_t delay_test_app(void *p);
+extern int32_t display_test_app(void *p);
+extern int32_t gpio_app(void *p);
+extern int32_t ibutton_app(void *p);
+extern int32_t infrared_app(void *p);
+extern int32_t infrared_monitor_app(void *p);
+extern int32_t keypad_test_app(void *p);
+extern int32_t lfrfid_app(void *p);
+extern int32_t lfrfid_debug_app(void *p);
+extern int32_t nfc_app(void *p);
+extern int32_t passport_app(void *p);
+extern int32_t scened_app(void *p);
+extern int32_t storage_test_app(void *p);
+extern int32_t subghz_app(void *p);
+extern int32_t universal_rf_remote_app(void *p);
+extern int32_t usb_mouse_app(void *p);
+extern int32_t usb_test_app(void *p);
+extern int32_t vibro_test_app(void *p);
+extern int32_t bt_hid_app(void *p);
+extern int32_t battery_test_app(void *p);
+extern int32_t text_box_test_app(void *p);
 
 // Plugins
-extern int32_t music_player_app(void* p);
-extern int32_t snake_game_app(void* p);
+extern int32_t music_player_app(void *p);
+extern int32_t snake_game_app(void *p);
 
 // On system start hooks declaration
 extern void bt_on_system_start();
@@ -64,13 +65,13 @@ extern void unit_tests_on_system_start();
 extern void updater_on_system_start();
 
 // Settings
-extern int32_t notification_settings_app(void* p);
-extern int32_t storage_settings_app(void* p);
-extern int32_t bt_settings_app(void* p);
-extern int32_t desktop_settings_app(void* p);
-extern int32_t about_settings_app(void* p);
-extern int32_t power_settings_app(void* p);
-extern int32_t system_settings_app(void* p);
+extern int32_t notification_settings_app(void *p);
+extern int32_t storage_settings_app(void *p);
+extern int32_t bt_settings_app(void *p);
+extern int32_t desktop_settings_app(void *p);
+extern int32_t about_settings_app(void *p);
+extern int32_t power_settings_app(void *p);
+extern int32_t system_settings_app(void *p);
 
 const FlipperApplication FLIPPER_SERVICES[] = {
 /* Services */
@@ -183,7 +184,7 @@ const FlipperApplication FLIPPER_SERVICES[] = {
      .icon = NULL,
      .flags = FlipperApplicationFlagDefault},
 #endif
-};
+		};
 
 const size_t FLIPPER_SERVICES_COUNT = COUNT_OF(FLIPPER_SERVICES);
 
@@ -198,7 +199,7 @@ const FlipperApplication FLIPPER_SYSTEM_APPS[] = {
      .icon = NULL,
      .flags = FlipperApplicationFlagDefault},
 #endif
-};
+		};
 
 const size_t FLIPPER_SYSTEM_APPS_COUNT = COUNT_OF(FLIPPER_SYSTEM_APPS);
 
@@ -210,6 +211,14 @@ const FlipperApplication FLIPPER_APPS[] = {
      .name = "Sub-GHz",
      .stack_size = 2048,
      .icon = &A_Sub1ghz_14,
+     .flags = FlipperApplicationFlagDefault},
+#endif
+
+#ifdef APP_UNIVERSALRF
+    {.app = universal_rf_remote_app,
+     .name = "Univeral-RF",
+     .stack_size = 2048,
+     .icon = &A_UniversalRemote_14,
      .flags = FlipperApplicationFlagDefault},
 #endif
 
@@ -269,13 +278,12 @@ const FlipperApplication FLIPPER_APPS[] = {
      .flags = FlipperApplicationFlagDefault},
 #endif
 
-};
+		};
 
 const size_t FLIPPER_APPS_COUNT = COUNT_OF(FLIPPER_APPS);
 
 // On system start hooks
-const FlipperOnStartHook FLIPPER_ON_SYSTEM_START[] = {
-    crypto_on_system_start,
+const FlipperOnStartHook FLIPPER_ON_SYSTEM_START[] = { crypto_on_system_start,
 
 #ifdef APP_INFRARED
     infrared_on_system_start,
@@ -320,7 +328,7 @@ const FlipperOnStartHook FLIPPER_ON_SYSTEM_START[] = {
 #ifdef APP_UPDATER
     updater_on_system_start,
 #endif
-};
+		};
 
 const size_t FLIPPER_ON_SYSTEM_START_COUNT = COUNT_OF(FLIPPER_ON_SYSTEM_START);
 
@@ -349,7 +357,7 @@ const FlipperApplication FLIPPER_PLUGINS[] = {
      .icon = &A_Plugins_14,
      .flags = FlipperApplicationFlagDefault},
 #endif
-};
+		};
 
 const size_t FLIPPER_PLUGINS_COUNT = COUNT_OF(FLIPPER_PLUGINS);
 
@@ -474,7 +482,7 @@ const FlipperApplication FLIPPER_DEBUG_APPS[] = {
      .icon = NULL,
      .flags = FlipperApplicationFlagDefault},
 #endif
-};
+		};
 
 const size_t FLIPPER_DEBUG_APPS_COUNT = COUNT_OF(FLIPPER_DEBUG_APPS);
 
@@ -552,6 +560,6 @@ const FlipperApplication FLIPPER_SETTINGS_APPS[] = {
      .icon = NULL,
      .flags = FlipperApplicationFlagDefault},
 #endif
-};
+		};
 
 const size_t FLIPPER_SETTINGS_APPS_COUNT = COUNT_OF(FLIPPER_SETTINGS_APPS);
