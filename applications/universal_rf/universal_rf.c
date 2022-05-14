@@ -83,10 +83,10 @@ static void remote_send_signal(uint32_t frequency, string_t signal, string_t pro
         fflush(stdout);
         osDelay(333);
     }
-furi_hal_subghz_stop_async_tx();
-furi_hal_subghz_sleep();
+    furi_hal_subghz_stop_async_tx();
+    furi_hal_subghz_sleep();
 
-furi_hal_power_suppress_charge_exit();
+    furi_hal_power_suppress_charge_exit();
 
     flipper_format_free(flipper_format);
     subghz_transmitter_free(transmitter);
