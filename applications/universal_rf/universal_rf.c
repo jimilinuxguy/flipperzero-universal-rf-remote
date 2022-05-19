@@ -7,6 +7,7 @@
 #include <lib/subghz/transmitter.h>
 #include <lib/subghz/subghz_file_encoder_worker.h>
 #include <lib/toolbox/path.h>
+#include <notification/notification_messages.h>
 
 #define TAG "UniveralRFRemote"
 
@@ -57,7 +58,7 @@ static void remote_send_signal(uint32_t frequency, string_t signal, string_t pro
     } else {
         return;
     }
-
+    NotificationApp* notification = furi_record_open("notification");
     FlipperFormat* flipper_format = flipper_format_string_alloc();
     Stream* stream = flipper_format_get_raw_stream(flipper_format);
     stream_clean(stream);
@@ -76,6 +77,8 @@ static void remote_send_signal(uint32_t frequency, string_t signal, string_t pro
         TAG, "Transmitting at %lu, repeat %lu. Press CTRL+C to stop\r\n", frequency, repeat);
 
     furi_hal_power_suppress_charge_enter();
+    notification_message(notification, &sequence_set_vibro_on);
+
     furi_hal_subghz_start_async_tx(subghz_transmitter_yield, transmitter);
 
     while(!(furi_hal_subghz_is_async_tx_complete())) {
@@ -83,6 +86,10 @@ static void remote_send_signal(uint32_t frequency, string_t signal, string_t pro
         fflush(stdout);
         osDelay(333);
     }
+    notification_message(notification, &sequence_reset_vibro);
+
+    furi_record_close("notification");
+
     furi_hal_subghz_stop_async_tx();
     furi_hal_subghz_sleep();
 
